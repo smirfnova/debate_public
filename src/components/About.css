@@ -1,0 +1,28 @@
+.container {
+    padding-top: 75px;
+    padding-right: 150px;
+    padding-left: 150px;
+    padding-bottom: 75px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif',
+
+
+}
+
+.paper {
+    padding-left: 70px;
+    background-color: #CCF3FC;
+    padding-top: 20px;
+    padding-right: 70px;
+    padding-bottom: 50px;
+}
+
+.tab {
+    margin-left: 40px;
+}
+
+.text{
+    margin-left: 40px;
+    
+
+}
+
