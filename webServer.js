@@ -6,6 +6,9 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'src');
 app.use(express.static(publicPath));
 app.use(express.json())
+var cors = require('cors')
+app.use(cors())
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
