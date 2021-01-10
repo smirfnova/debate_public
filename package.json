@@ -1,7 +1,6 @@
 {
   "name": "debate",
   "proxy": "http://localhost:8080",
-  "homepage": "http://smirfnova.github.io/debate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +23,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

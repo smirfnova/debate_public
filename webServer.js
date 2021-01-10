@@ -2,9 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-app.use(express.static(path.join(__dirname, 'build')));
+//app.use(express.static(path.join(__dirname, 'build')));
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
 app.use(express.json())
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 const {BigQuery} = require('@google-cloud/bigquery');
 
