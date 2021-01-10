@@ -26,6 +26,7 @@ app.get('/', function (req, res) {
 
 
 app.post('/query', function(req, res) {
+  console.log("in server")
   async function querydb() {
     console.log("this is the body", req.body.topic_areas);
     var filter = '';
@@ -47,7 +48,7 @@ app.post('/query', function(req, res) {
     console.log(filter)
 
     const sqlQuery = `SELECT *,
-    FROM \`debate-topics.debateopics.topics\`
+    FROM \`debate-topics.debateopics.topics_1\`
     ${filter}
     ORDER BY RAND()
     LIMIT 1`;
