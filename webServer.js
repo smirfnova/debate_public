@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
 });
 
 
-app.post('https://debatetopics.herokuapp.com/query', function(req, res) {
+app.post('/query', function(req, res) {
   console.log("in server")
   async function querydb() {
     console.log("this is the body", req.body.topic_areas);
