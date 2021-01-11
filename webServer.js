@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-//app.use(express.static(path.join(__dirname, 'build')));
-const publicPath = path.join(__dirname, '..', 'src');
-app.use(express.static(publicPath));
+app.use(express.static(path.join(__dirname, 'build')));
+//const publicPath = path.join(__dirname, '..', 'src');
+//app.use(express.static(publicPath));
 app.use(express.json())
 var cors = require('cors')
 app.use(cors())

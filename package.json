@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-popup-state": "^1.7.1",
@@ -23,7 +24,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "node webServer.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -50,7 +51,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
-  }, 
+  },
   "engines": {
     "node": "12.16.2"
   }
