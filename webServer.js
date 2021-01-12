@@ -17,7 +17,7 @@ app.get('*', (req, res) => {
 const {BigQuery} = require('@google-cloud/bigquery');
 
 const options = {
-  keyFilename: '/Users/ladyjane/Downloads/debate-topics-d0129d3d9dd2.json',
+  keyFilename: 'key.json',
   projectId: 'debate-topics'
 }
 const bigquery = new BigQuery(options);
