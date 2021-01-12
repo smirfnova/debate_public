@@ -17,12 +17,15 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
       marginRight: theme.spacing(5),
     }, toolBar: {
-      background: 'linear-gradient(to right, white 20%, #2b2d42 70%)',
+      background: '#63b7f5',
+      minHeight: 12,
       paddingTop: theme.spacing(1),
       paddingBottom: theme.spacing(0),
     },
     homeButton: {
       marginLeft: theme.spacing(2),
+    }, bar: {
+        minHeight: 5
     },
     title: {
       fontWeight: 'bold',
@@ -31,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: [
         'Cambria', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif',
       ].join(','),
-      textDecoration: "underline dotted",
+      textDecoration: "underline",
       textDecorationColor: "#b1a7a6",
       textDecorationThickness: '5px'
     },
@@ -52,22 +55,22 @@ export default function TopBar() {
       <ThemeProvider theme={theme}>
 
         <div className={classes.root}>
-        <AppBar position="static" className = {classes.toolBar} style = {{color: "#161a1d", boxShadow: "0px 0px 3px 0px" }}>
-          <Toolbar>
+        <AppBar position="static" className = {classes.toolBar} style = {{color: "#161a1d", boxShadow: "0px 0px 0px 0px" }}>
+          <Toolbar variant = "dense" className = {classes.bar}>
             <IconButton className={classes.homeButton} edge="start">
             <a href = "/" >
                     <HomeIcon  style = {{fill: "#a4161a"}} />
                 </a>
             </IconButton>
-            <Typography className={classes.title} variant="h3" >
+            <Typography className={classes.title} variant="h5" >
                 debate topics
             </Typography>
             <div className = "menu_container">
             <PopupState  className = "menu_select" variant="popover" popupId="demo-popup-menu">
                     {(popupState) => (
                         <React.Fragment>
-                        <Button className={classes.menuButton} style = {{backgroundColor: "#a4161a", color : "#d3d3d3", fontWeight: 'bold', fontSize: '16px'}}variant="contained" {...bindTrigger(popupState)}>
-                            MENU <MenuIcon  style = {{fill: "#d3d3d3"}}/>
+                        <Button className={classes.menuButton} style = {{backgroundColor: "#a4161a", color : "white", fontSize: '15px'}}variant="contained" {...bindTrigger(popupState)}>
+                            MENU <MenuIcon  style = {{fill: "white"}}/>
                         </Button>
                         <Menu  {...bindMenu(popupState)}>
                             <a href = "#/" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Simple Topic Selector</MenuItem></a>

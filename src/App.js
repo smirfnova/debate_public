@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {
-  Redirect, HashRouter, Route, Switch
+  HashRouter, Route, 
 } from 'react-router-dom';
 import { Paper } from '@material-ui/core';
 import React from "react";
@@ -16,12 +16,14 @@ import Topic from './components/Topic';
 
 
 
+
 function App(props) {
+
   return (
     <HashRouter>  
       <div className = "page"> 
         <div style= {{backgroundColor: "black"}} className = "app_container">
-        <Paper style= {{backgroundColor: "#F2F4F3", height: "100vh", overflow: "auto"}}className = "paper_container">
+        <Paper style= {{background: 'linear-gradient(188deg, rgba(99,183,245,1) 66%, rgba(251,251,251,1) 66%)', height: "100vh", overflow: "auto"}}className = "paper_container">
         <TopBar/>
     
         <Route path = "/advanced">       
