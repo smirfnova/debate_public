@@ -182,9 +182,10 @@ export default function About() {
                     *Note that filters applied act as a union relationship, as opposed to intersectional. For example, if Health and Energy topic filter is applied, topics will 
                     be randomly from topics that are either Health related or Energy related, as opposed to being Health AND energy related.
                 </p>
-              </div>
-
-          </Collapsible>
+             
+                </div>
+     
+           </Collapsible>
       <div className = "center"> 
         <button className = "button" onClick = {handleClick}> Click here to get a topic</button>
 

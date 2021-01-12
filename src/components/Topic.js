@@ -56,8 +56,9 @@ export default function Topic() {
             Want to have more options in selecting topics? Such as choosing topic areas and number of topics?
             Go to menu and choose the Advanced Topic Selector. 
             <br/>
-                
             </div>
+
+                
             </Collapsible>
 
 

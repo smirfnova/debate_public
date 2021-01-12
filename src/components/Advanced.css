@@ -34,7 +34,7 @@ p {
     }
 
   .Collapsible {
-    border: 2px solid #AB9F9D;
+    border-bottom: 2px solid #AB9F9D;
     background-color: transparent;
     padding: 15px;
     opacity: .8;
