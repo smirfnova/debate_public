@@ -36,11 +36,11 @@ app.get('/', function (req, res) {
 app.post('/query', function(req, res) {
   console.log("in server")
   async function querydb() {
-    console.log("this is the body", req.body.topic_areas);
+    console.log("typeof", typeof req.body);
     var filter = '';
+    console.log(req.body, "hi")
     if(req.body.topic_areas !== undefined) {
-      if(req.body.topic_areas.length != 0)  {
-        console.log("hi");
+      if(req.body.topic_areas[0] !== null && req.body.topic_areas.length !== 0)  {
         filter = "WHERE ";
         for(i = 0; i < req.body.topic_areas.length; i++) {
           let add = "string_field_2 = " + '"' + req.body.topic_areas[i] + '"';
@@ -52,16 +52,19 @@ app.post('/query', function(req, res) {
         }
       } 
     }
-  
-    let num = req.body.num;
-
+    
+    let num = 1;
+    if(req.body.num !== undefined) {
+      console.log("there is a body num")
+      num = req.body.num;
+    }
     console.log(filter)
 
     const sqlQuery = `SELECT *,
     FROM \`debate-topics.debateopics.topics_1\`
     ${filter}
     ORDER BY RAND()
-    LIMIT 1`;
+    LIMIT ${num}`;
 
   const options = {
     query: sqlQuery,

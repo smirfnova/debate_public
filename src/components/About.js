@@ -20,9 +20,9 @@ class About extends React.Component {
 	<div className = "text">
 
 	<h2> Motivations</h2>
-		This is a quick little tool that can be used to create debate topics used for practice rounds. I strongly believe that
-		debate topics serve as a pedagogical tool. The topics we debate inform the research students will do and thus, it is important
-		to me to choose topics which I believe is important for students to have education on. As a coach, however, I often struggled coming up with 
+		This is a quick little tool that can be used to get debate topics used for practice rounds. I strongly believe that
+		debate topics serve an pedagogical function. The topics we debate inform the research students will do and thus, it is important
+		for me to choose topics which is important for students to have education on. As a coach, however, I often struggled coming up with 
 		debate topics for my students to practice with. A huge problem is that of "epistemic blindspots". In essence, we don't know what we don't know. 
 		What occured was that because I have to know about a topic in order to give students a topic, I tend to give my students
 		topics I am already familiar with. This cycle became reinforced as certain subjects were never debate on. 
@@ -69,7 +69,7 @@ class About extends React.Component {
 		<br/>
 		<br/>
 		Additionally, there could be further work done on improving the relevancy of topics and ensuring that the 
-		topics have ground on both side. I hope to include ways for this in the future as well. 
+		topics have ground on both side. In the future, I will work on developing ways to better curate through the topics. 
 		<br/>
 		<br/>
 		If you would like to have my original dataset of topics, containing some 14,000 different topics, feel free to 

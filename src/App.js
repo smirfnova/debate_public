@@ -23,7 +23,7 @@ function App(props) {
     <HashRouter>  
       <div className = "page"> 
         <div style= {{backgroundColor: "black"}} className = "app_container">
-        <Paper style= {{background: 'linear-gradient(188deg, rgba(99,183,245,1) 66%, rgba(251,251,251,1) 66%)', height: "100vh", overflow: "auto"}}className = "paper_container">
+        <Paper style= {{background: 'linear-gradient(188deg, rgba(240,233,219,1) 66%, rgba(255,255,255,1) 66%)', height: "100vh", overflow: "auto"}}className = "paper_container">
         <TopBar/>
     
         <Route path = "/advanced">       

@@ -88,13 +88,24 @@ p {
 }
 
 .resolution {
-  font-size: 30px;
+  font-size: 18px;
   margin-right: 30vh;
   margin-left: 30vh;
   margin-bottom: 5vh;
+  font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
 }
 
 .link {
   margin-top: 5vh;
   font-size: 15x;
+}
+
+.link {
+  font-size: 15px;
+}
+
+.cell {
+  padding-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
 }

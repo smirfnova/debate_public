@@ -15,9 +15,9 @@
 
 .cont {
     bottom: 100px;
-    padding-top: 200px;
+    padding-top: 90px;
     margin-top: 10vh;
-    padding-bottom:200px;
+    padding-bottom:100px;
     font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
 
 
@@ -29,3 +29,20 @@
     font-size: 15px;
     
 }
+
+.loader {
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #a8a6a6; /* grey */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

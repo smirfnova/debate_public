@@ -9,7 +9,37 @@ import { useState} from 'react';
 export default function Topic() {
     const [state, setResolution] = useState({
         resolution: '',
+        loader: <div class="loader"></div>,
     });
+
+    let questions = <div> </div>
+    if(state.resolution.length != '') {
+        questions =  <Collapsible trigger="Questions? " transitionTime = {100}>
+
+        <div className = "instructions">
+
+        Why is the wording of my topic so funny? 
+        Why is the topic skewed towards one side?
+        <br/>
+        <br/>
+        Topics are randomly selected  from bills introduced in to Congress. Some will probably not be grammatically correct and some will be overly specific. 
+        Therefore,  I recommend using these topics as inspiration to create your own topics, as opposed to taking these topics verbatim.
+        Use your own discretion.
+        Since I did not curate every bill, some of these topics may also not have reasonable ground for both sides.
+        If the topic is not debateable, refresh the page to get a new topic.
+       
+        <br/>
+        <br/>
+        Want to have more options in selecting topics? Such as choosing topic areas and number of topics?
+        Go to menu and choose the Advanced Topic Selector. 
+        <br/>
+        </div>
+
+            
+        </Collapsible>
+    }
+
+
     
     useEffect(() => {
         axios.post('/query').then(response => 
@@ -25,41 +55,24 @@ export default function Topic() {
                 if(index != -1) {
                    res = temp.substring(0, index) + '.'
                 }
-                setResolution({...state, resolution: res});
+                setResolution({...state, resolution: res, loader: <div></div>});
+                
+              
             }).catch(function(error) {
                 console.log(error);
             });
 
     }, [])
 
+
     return (
         <div className = "cont">
+           {state.loader}
             <div className = "topic">
                 {state.resolution}
             </div>
 
-            <Collapsible trigger="Questions? " transitionTime = {100}>
-
-            <div className = "instructions">
-
-            Why is the wording of my topic so funny? 
-            Why is the topic skewed towards one side?
-            <br/>
-            <br/>
-            Topics are randomly selected  from bills introduced in to Congress. A good majority of these topics
-            have reasonable ground, but there are many others that are not. 
-            I did not curate through every bill. If the topic is not debateable, refresh the page to get a new topic.
-            I recommend using these topics as inspiration to create your own topics, as opposed to taking these topics verbatim.
-            Some will probably not be grammatically correct and some will be overly specific. Use your own discretion.
-            <br/>
-            <br/>
-            Want to have more options in selecting topics? Such as choosing topic areas and number of topics?
-            Go to menu and choose the Advanced Topic Selector. 
-            <br/>
-            </div>
-
-                
-            </Collapsible>
+           {questions}
 
 
         </div>

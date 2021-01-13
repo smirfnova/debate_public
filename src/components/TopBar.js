@@ -16,8 +16,9 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
       marginRight: theme.spacing(5),
+      
     }, toolBar: {
-      background: '#63b7f5',
+      background: '#f0e9db',
       minHeight: 12,
       paddingTop: theme.spacing(1),
       paddingBottom: theme.spacing(0),
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         'Cambria', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif',
       ].join(','),
       textDecoration: "underline",
-      textDecorationColor: "#b1a7a6",
+      textDecorationColor: "#a8a6a6",
       textDecorationThickness: '5px'
     },
   }));
@@ -63,14 +64,14 @@ export default function TopBar() {
                 </a>
             </IconButton>
             <Typography className={classes.title} variant="h5" >
-                debate topics
+                Debate Topics
             </Typography>
             <div className = "menu_container">
             <PopupState  className = "menu_select" variant="popover" popupId="demo-popup-menu">
                     {(popupState) => (
                         <React.Fragment>
                         <Button className={classes.menuButton} style = {{backgroundColor: "#a4161a", color : "white", fontSize: '15px'}}variant="contained" {...bindTrigger(popupState)}>
-                            MENU <MenuIcon  style = {{fill: "white"}}/>
+                            <Typography>MENU</Typography> <MenuIcon  style = {{fill: "white"}}/>
                         </Button>
                         <Menu  {...bindMenu(popupState)}>
                             <a href = "#/" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Simple Topic Selector</MenuItem></a>

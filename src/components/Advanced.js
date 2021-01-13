@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
 import {
- Typography
+ Typography, Paper
 } from '@material-ui/core';
 import { createMuiTheme, withStyles, ThemeProvider } from '@material-ui/core/styles';
 
@@ -41,6 +41,7 @@ export default function About() {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const [expanded, setExpand] = React.useState();
 
 
   const handleChange1 = (event) => {
@@ -57,6 +58,13 @@ export default function About() {
     setOpen(true);
   };
 
+  const handleExpand = () => {
+    setExpand(true)
+  }
+
+  const handleCollapse = () => {
+    setExpand(false)
+  }
     const [state, setState] = React.useState({
         checked_1: false,
         checked_2: false,
@@ -91,12 +99,13 @@ export default function About() {
         checked_31: false,
         checked_32: false,
         checked_33: false,
-        resolution: '',
+        resolution: [],
         link: '',
         num: 1,
+        loader: <div></div>
       });
     
-
+      let res_array = [];
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -109,6 +118,10 @@ export default function About() {
       "Sports and Recreation", "Traxation", "Transportation and Public Works", "Water Resources Development"]
       
       const handleClick = (event) => {
+        console.log(expanded)
+        setExpand(false);
+        console.log(expanded)
+        setState({...state, loader: <div class= "loader"></div>})
         let topics = ["Agriculture and Food", "Animals", "Armed Forces and National Security", "Arts, Culture, Religion", 
         "Civil Rights and Liberties, Minority Issues", "Commerce", "Crime and Law Enforcement", "Economics and Public Finance", "Education", "Emergency Management", "Energy",
         "Environmental Protection", "Families", "Finance and Financial Sector", "Foreign Trade and International Finance", "Geographic Areas, Entities, and Committees",
@@ -128,24 +141,29 @@ export default function About() {
           topic_areas: selected,
           num: state.num
         }
-        console.log(state.num)
+        console.log(params)
 
         console.log(selected);
         axios.post('/query', params).then(response => {
           const result = response.request.response;
-          const temp_result = result.slice(2, -2);
-          console.log(result)
+          const temp_result = result.slice(1, -1);
+          
           const values = JSON.parse(temp_result)
-          const temp = values.string_field_0.replaceAll("|", ",");
-          const index = temp.indexOf(', and for other purposes.')
-          let res = temp;
-          console.log("hi");
-          if(index != -1) {
-             res = temp.substring(0, index) + '.'
-          }
-          const found_link = values.string_field_1;
-          setState({
-              ...state, resolution: res, link: found_link});
+          console.log(values[0], values[1])
+          
+          for(i = 0 ; i < values.length; i++) {
+            const temp = values[i].string_field_0.replaceAll("|", ",");
+            const index = temp.indexOf(', and for other purposes.')
+            let res = temp;
+            if(index != -1) {
+               res = temp.substring(0, index) + '.'
+            }
+            let found_link = values[i].string_field_1;
+            res_array.push(<div className = "cell"> {res}<div className = "link"> visit <a href = {found_link}>{found_link}</a> for full bill text</div>  <br/> <hr/></div> )
+            }
+            setState({...state, resolution: res_array, loader: <div></div>})
+
+
         }).catch(function(error) {
           console.log(error);
         });
@@ -201,7 +219,7 @@ export default function About() {
       <ThemeProvider theme={theme}>
 
       <div className = "select">
-          <Collapsible trigger= "Select Topic Area +" transitionTime = {100}> 
+          <Collapsible open = {expanded} onTriggerOpening = {handleExpand} onTriggerClosing = {handleCollapse} trigger= "Select Topic Area +" transitionTime = {100}> 
               <p className = "header">Choose the topic area(s) you would like a resolution to be randomly chosen from. If no topics are chosen, by default,
                       a resolution will be selected from all possible topic areas. 
                     
@@ -259,13 +277,16 @@ export default function About() {
            </Collapsible>
       <div className = "center"> 
         <button className = "button" onClick = {handleClick}> Click here to get a topic</button>
-
       </div>
+
         <div className = "resolution"> 
+        {state.loader}
+
+        <Paper>
         {state.resolution}
-        <div className = "link">
-        {link_text}
-        </div>
+        </Paper>
+
+  
         </div>
 
         
