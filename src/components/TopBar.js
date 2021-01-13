@@ -74,8 +74,8 @@ export default function TopBar() {
                             <Typography>MENU</Typography> <MenuIcon  style = {{fill: "white"}}/>
                         </Button>
                         <Menu  {...bindMenu(popupState)}>
-                            <a href = "#/" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Simple Topic Selector</MenuItem></a>
-                            <a href = "#/advanced" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Advanced Topic Selector</MenuItem></a>
+                            <a href = "#/" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Simple Topic Generator</MenuItem></a>
+                            <a href = "#/advanced" style = {{color: "black"}}>  <MenuItem onClick={popupState.close}>Advanced Topic Generator</MenuItem></a>
                             <a href = "#/about" style = {{color: "black"}}> <MenuItem onClick={popupState.close}>About this Page</MenuItem>
                         </a>
                         </Menu>
