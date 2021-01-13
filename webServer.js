@@ -58,7 +58,7 @@ app.post('/query', function(req, res) {
       console.log("there is a body num")
       num = req.body.num;
     }
-    console.log(filter)
+    console.log(num)
 
     const sqlQuery = `SELECT *,
     FROM \`debate-topics.debateopics.topics_1\`
