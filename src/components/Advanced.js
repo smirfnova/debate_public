@@ -139,7 +139,7 @@ export default function About() {
           const temp = values.string_field_0.replaceAll("|", ",");
           const index = temp.indexOf(', and for other purposes.')
           let res = temp;
-          console.log(res);
+          console.log("hi");
           if(index != -1) {
              res = temp.substring(0, index) + '.'
           }

@@ -61,7 +61,7 @@ app.post('/query', function(req, res) {
     FROM \`debate-topics.debateopics.topics_1\`
     ${filter}
     ORDER BY RAND()
-    LIMIT ${num}`;
+    LIMIT 1`;
 
   const options = {
     query: sqlQuery,
