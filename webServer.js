@@ -53,13 +53,15 @@ app.post('/query', function(req, res) {
       } 
     }
   
+    let num = req.body.num;
+
     console.log(filter)
 
     const sqlQuery = `SELECT *,
     FROM \`debate-topics.debateopics.topics_1\`
     ${filter}
     ORDER BY RAND()
-    LIMIT 1`;
+    LIMIT ${num}`;
 
   const options = {
     query: sqlQuery,

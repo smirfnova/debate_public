@@ -13,6 +13,22 @@ import { createMuiTheme, withStyles, ThemeProvider } from '@material-ui/core/sty
 
 import axios from 'axios';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
+ 
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -22,6 +38,24 @@ const theme = createMuiTheme({
 });
 
 export default function About() {
+  const classes = useStyles();
+  const [age, setAge] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleChange1 = (event) => {
+    setAge(event.target.value);
+    setState({...state, num: event.target.value});
+
+  };
+
+  const handleClose = (event) => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
     const [state, setState] = React.useState({
         checked_1: false,
@@ -59,6 +93,7 @@ export default function About() {
         checked_33: false,
         resolution: '',
         link: '',
+        num: 1,
       });
     
 
@@ -67,7 +102,7 @@ export default function About() {
       };
 
       let topics = ["Agriculture and Food", "Animals", "Armed Forces and National Security", "Arts, Culture, Religion", 
-      "Civil Right and Liberties, Minority Issues", "Commerce", "Crime and Law Enforcement", "Economics and Public Finance", "Education", "Emergency Management", "Energy",
+      "Civil Rights and Liberties, Minority Issues", "Commerce", "Crime and Law Enforcement", "Economics and Public Finance", "Education", "Emergency Management", "Energy",
       "Environmental Protection", "Families", "Finance and Financial Sector", "Foreign Trade and International Finance", "Geographic Areas, Entities, and Committees",
       "Government Operations and Politics", "Health", "Housing and Community Devlepment", "Immigration", "International Affairs", "Labor and Employment", 
       "Law", "Native Americans", "Private Legislation", "Public Lands and Natural Resources", " Science, Technology, Communications", "Social Sciences and History", "Social Welfare",
@@ -75,7 +110,7 @@ export default function About() {
       
       const handleClick = (event) => {
         let topics = ["Agriculture and Food", "Animals", "Armed Forces and National Security", "Arts, Culture, Religion", 
-        "Civil Right and Liberties, Minority Issues", "Commerce", "Crime and Law Enforcement", "Economics and Public Finance", "Education", "Emergency Management", "Energy",
+        "Civil Rights and Liberties, Minority Issues", "Commerce", "Crime and Law Enforcement", "Economics and Public Finance", "Education", "Emergency Management", "Energy",
         "Environmental Protection", "Families", "Finance and Financial Sector", "Foreign Trade and International Finance", "Geographic Areas, Entities, and Committees",
         "Government Operations and Politics", "Health", "Housing and Community Devlepment", "Immigration", "International Affairs", "Labor and Employment", 
         "Law", "Native Americans", "Private Legislation", "Public Lands and Natural Resources", " Science, Technology, Communications", "Social Sciences and History", "Social Welfare",
@@ -91,7 +126,10 @@ export default function About() {
         }
         let params = {
           topic_areas: selected,
+          num: state.num
         }
+        console.log(state.num)
+
         console.log(selected);
         axios.post('/query', params).then(response => {
           const result = response.request.response;
@@ -115,7 +153,7 @@ export default function About() {
       let area_1 = topics.splice(0, 11);
       let states_1 = [state.checked_1, state.checked_2, state.checked_3, state.checked_4, state.checked_5, state.checked_6, 
         state.checked_7, state.checked_8, state.checked_9, state.checked_10, state.checked_11]
-        let names_1 = ["checked_1", "checked_2", "checked_3", "checked_4", "checked_5", "checked_6", "checked_7", "checked_8", "checked9", "checked_10", "checked_11"]
+        let names_1 = ["checked_1", "checked_2", "checked_3", "checked_4", "checked_5", "checked_6", "checked_7", "checked_8", "checked_9", "checked_10", "checked_11"]
       let col_1 = []
       for(var i = 0; i < 11; i++) {
         col_1.push (
@@ -184,6 +222,39 @@ export default function About() {
                 </p>
              
                 </div>
+              <div>
+              <div>
+                <p>
+                Select number of topics to be generated
+                </p>
+        <FormControl className={classes.formControl}>
+        <InputLabel      id="demo-controlled-open-select-label">Number</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onChange={handleChange1} 
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={age}
+        >
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+          <MenuItem value={3}>3</MenuItem>
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={5}>5</MenuItem>
+          <MenuItem value={6}>6</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
+          <MenuItem value={9}>9</MenuItem>
+          <MenuItem value={10}>10</MenuItem>
+
+        </Select>
+      </FormControl>
+      <p className = "note"> *if no number of topics is selected, by default one topic will be generated</p>
+
+    </div>
+              </div>
      
            </Collapsible>
       <div className = "center"> 
