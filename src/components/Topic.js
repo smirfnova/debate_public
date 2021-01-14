@@ -39,7 +39,7 @@ export default function Topic() {
     }
 
 
-    
+    //upon initial load and refresh of the page, make an api call to get a random topic
     useEffect(() => {
         axios.post('/query').then(response => 
             {
