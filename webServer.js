@@ -79,7 +79,7 @@ app.post('/query', function(req, res) {
     res.status(200).send(rows);
 } querydb();
 });
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 8080);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));

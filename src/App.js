@@ -4,7 +4,8 @@ import {
   HashRouter, Route, 
 } from 'react-router-dom';
 import { Paper } from '@material-ui/core';
-import React from "react";
+import React, {useEffect} from "react";
+import ReactGa from 'react-ga'
 
 
 
@@ -18,6 +19,10 @@ import Topic from './components/Topic';
 
 
 function App(props) {
+  useEffect(() => {
+    ReactGa.initialize('G-MZRKNNR7EC')
+    ReactGa.pageview('/')
+  }, [])
 
   return (
     <HashRouter>  
