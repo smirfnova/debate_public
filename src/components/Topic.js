@@ -9,7 +9,6 @@ import { useState} from 'react';
 export default function Topic() {
     const [state, setResolution] = useState({
         resolution: '',
-        loader: <div class="loader"></div>,
     });
 
     let questions = <div> </div>
@@ -55,7 +54,7 @@ export default function Topic() {
                 if(index != -1) {
                    res = temp.substring(0, index) + '.'
                 }
-                setResolution({...state, resolution: res, loader: <div></div>});
+                setResolution({...state, resolution: res});
                 
               
             }).catch(function(error) {
@@ -67,7 +66,6 @@ export default function Topic() {
 
     return (
         <div className = "cont">
-           {state.loader}
             <div className = "topic">
                 {state.resolution}
             </div>
