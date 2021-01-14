@@ -14,6 +14,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
+//set up bigquery client to be queried from 
 const {BigQuery} = require('@google-cloud/bigquery');
 
 const options = {
@@ -22,9 +23,8 @@ const options = {
 }
 const bigquery = new BigQuery(options);
 
-
+//testing functionality of webserver
 app.get('/ping', function (req, res) {
-  
  return res.send('pong');
 });
 
@@ -33,12 +33,14 @@ app.get('/', function (req, res) {
 });
 
 
+//makes a query with BigQuery, returns an array of {topic, link, topic area}
 app.post('/query', function(req, res) {
   console.log("in server")
   async function querydb() {
     console.log("typeof", typeof req.body);
     var filter = '';
     console.log(req.body, "hi")
+    //parse params passed in the POST request, to determine what filters should be applied when using BigQuery
     if(req.body.topic_areas !== undefined) {
       if(req.body.topic_areas[0] !== null && req.body.topic_areas.length !== 0)  {
         filter = "WHERE ";
