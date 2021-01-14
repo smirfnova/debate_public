@@ -19,8 +19,9 @@ import Topic from './components/Topic';
 
 
 function App(props) {
+  //connect to Google Analytics to get page views
   useEffect(() => {
-    ReactGa.initialize('G-MZRKNNR7EC')
+    ReactGa.initialize('UA-187281282-1')
     ReactGa.pageview('/')
   }, [])
 
@@ -30,7 +31,6 @@ function App(props) {
         <div style= {{backgroundColor: "black"}} className = "app_container">
         <Paper style= {{background: 'linear-gradient(188deg, rgba(240,233,219,1) 66%, rgba(255,255,255,1) 66%)', height: "100vh", overflow: "auto"}}className = "paper_container">
         <TopBar/>
-    
         <Route path = "/advanced">       
         <Advanced />
         </Route>
@@ -41,13 +41,8 @@ function App(props) {
     
         <Route exact path = "/">
           <Topic/>
-        </Route>
-              
-    
-              
+        </Route>   
         </Paper>
-    
-          
         </div>
       </div>
 
